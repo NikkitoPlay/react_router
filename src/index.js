@@ -4,13 +4,20 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import Home from "./pages/Home";
-import About from "./pages/About";
 
 import {
   createBrowserRouter,
+  Navigate,
   RouterProvider
 } from 'react-router-dom';
+
+
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Product from './pages/Product';
+import Info from './pages/Info';
+import NotFound from './pages/NotFound';
+import Search from './pages/Search';
 
 
 /*const router = createBrowserRouter([
@@ -36,6 +43,31 @@ const router = createBrowserRouter([
       {
         path:'/about',
         element:<About/>
+      },
+      //rota dinamica
+      {
+        //faz refencia para o useParams
+        path:'/products/:id',
+        element: <Product/>
+      },
+      //nested
+      {
+        path:'/products/:id/info',
+        element: <Info/>
+      },
+      {
+        //redirect
+        path: '/company',
+        element: <Navigate to='/about'/>
+      },
+      {
+        path:'/search',
+        element: <Search/>
+      },
+      //no-match route
+      {
+        path:'*',
+        element: <NotFound/>
       }
     ]
   },
